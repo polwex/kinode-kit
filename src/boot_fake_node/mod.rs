@@ -107,7 +107,7 @@ pub fn get_platform_runtime_name() -> anyhow::Result<String> {
     }
     let os_name = std::str::from_utf8(&uname.stdout)?.trim();
 
-    let uname_p = Command::new("uname").arg("-p").output()?;
+    let uname_p = Command::new("uname").arg("-m").output()?;
     if !uname_p.status.success() {
         return Err(anyhow::anyhow!("kit: Could not determine architecture."));
     }
